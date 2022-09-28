@@ -11,9 +11,9 @@ function Navigationbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/registration">registration</Nav.Link>
-            <Nav.Link href="/authorization">authorization</Nav.Link>
+            <Nav.Link to="/">Home</Nav.Link>
+            <Nav.Link to="/registration">registration</Nav.Link>
+            <Nav.Link to="/authorization">authorization</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
