@@ -3,8 +3,6 @@ import { StaticRouter } from 'react-router-dom/server';
 import App from './App';
 
 export default function Layout({ initState }) {
-  delete initState.settings;
-  delete initState._locals;
   return (
     <html lang="en">
       <head>
