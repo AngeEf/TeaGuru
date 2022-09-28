@@ -7,7 +7,6 @@ function MyCard() {
   return (
     <Container>
       <Row md={3}>
-
         <Card>
           <Card.Header>Featured</Card.Header>
           <Card.Body>
@@ -18,7 +17,6 @@ function MyCard() {
             <Button variant="primary">Click</Button>
           </Card.Body>
         </Card>
-
       </Row>
     </Container>
   );
