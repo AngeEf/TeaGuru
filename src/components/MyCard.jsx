@@ -8,7 +8,7 @@ function MyCard() {
     <Container>
       <Row md={3}>
 
-        <Card>
+        <Card style={{ width: 300 }}>
           <Card.Header>Featured</Card.Header>
           <Card.Body>
             <Card.Title>Special title treatment</Card.Title>

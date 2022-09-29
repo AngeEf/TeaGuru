@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 // import MyCardList from './MyCardList';
 import MainPage from './MainPage';
 import Navigationbar from './Navigationbar';
+import MapComponent from './MapComponent';
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Navigationbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        {/* <Route path="/map" element={<MapComponent />} /> */}
       </Routes>
     </Container>
   );
