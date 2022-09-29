@@ -5,6 +5,7 @@ import MainPage from './MainPage';
 import Navigationbar from './Navigationbar';
 import RegistrationPage from './RegistrationPage';
 import AuthPage from './AuthPage';
+import CardPage from './CardPage';
 
 export default function App({ user }) {
   const [currUser, setCurrUser] = useState(user || {});
@@ -22,6 +23,7 @@ export default function App({ user }) {
         <Route path="/" element={<MainPage currUser={currUser} />} />
         <Route path="/user/registration" element={<RegistrationPage setCurrUser={setCurrUser} />} />
         <Route path="/user/authorization" element={<AuthPage setCurrUser={setCurrUser} />} />
+        <Route path="/user/cardpage" element={<CardPage />} />
       </Routes>
     </Container>
   );

@@ -21,14 +21,14 @@ export default function CommentForm({ create }) {
         value={post.title}
         onChange={(e) => setPost({ ...post, title: e.target.value })}
         type="text"
-        placeholder="Название поста"
+        placeholder="Название Комментария"
       />
       {/* Неуправляемый\Неконтролируемый компонент */}
       <MyInput
         value={post.body}
         onChange={(e) => setPost({ ...post, body: e.target.value })}
         type="text"
-        placeholder="Описание поста"
+        placeholder="Ваш комментарий"
       />
       <MyButton onClick={addNewPost}>Создать пост</MyButton>
     </form>
