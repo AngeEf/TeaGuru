@@ -5,6 +5,7 @@ import MainPage from './MainPage';
 import Navigationbar from './Navigationbar';
 import RegistrationPage from './RegistrationPage';
 import AuthPage from './AuthPage';
+import MapComponent from './MapComponent';
 
 export default function App({ user }) {
   const [currUser, setCurrUser] = useState(user || {});
