@@ -18,7 +18,6 @@ function MyCard() {
             <Button variant="primary">Click</Button>
           </Card.Body>
         </Card>
-
       </Row>
     </Container>
   );
