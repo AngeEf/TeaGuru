@@ -198,6 +198,7 @@ export default function MapComponent({items, currUser, setItems}) {
           </Popup>
           </>
         )}
+        {/* ------------------------------- */}
       </Map>
     </div>
   );
