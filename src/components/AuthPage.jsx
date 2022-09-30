@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 
 export default function AuthPage({ setCurrUser }) {
@@ -11,6 +12,8 @@ export default function AuthPage({ setCurrUser }) {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
     fetch('/api/auth/authorization', {
@@ -21,7 +24,8 @@ export default function AuthPage({ setCurrUser }) {
       body: JSON.stringify(input),
     })
       .then((res) => res.json())
-      .then((data) => setCurrUser(data));
+      .then((data) => setCurrUser(data))
+      .then(() => navigate('/'));
   };
 
   return (

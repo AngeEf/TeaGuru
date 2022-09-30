@@ -4,8 +4,8 @@ import Map, { Marker, Popup, NavigationControl } from 'react-map-gl';
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW5nZWVmIiwiYSI6ImNsOG11ZGJtbDBtdWEzcHF3YWp2aXphNmsifQ.sVmWjakm6PmhrNnrsT-LSg';
 
-export default function MapComponent({items, currUser, setItems}) {
-  const [marks, setMarks] = useState(items)
+export default function MapComponent({ items, currUser, setItems }) {
+  const [marks, setMarks] = useState(items);
   const [viewState, setViewState] = useState({
     latitude: 23.4387033,
     longitude: 85.730206,
@@ -14,7 +14,7 @@ export default function MapComponent({items, currUser, setItems}) {
 
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-//------------------------------------------------
+  //------------------------------------------------
   const [current, setCurrent] = useState(currUser);
 
   const [data, setData] = useState({
@@ -23,15 +23,14 @@ export default function MapComponent({items, currUser, setItems}) {
     lng: 0,
     lat: 0,
     description: '',
-    image: ''
+    image: '',
   });
-
 
   useEffect(() => {
     fetch('api/cardlist')
-    .then(res => res.json())
-    .then(data => setMarks(data))
-  }, [])
+      .then((res) => res.json())
+      .then((data) => setMarks(data));
+  }, []);
 
   const handleMarkerClick = (id, lat, long) => {
     setCurrentPlaceId(id);
@@ -45,7 +44,7 @@ export default function MapComponent({items, currUser, setItems}) {
   const handleAddClick = (e) => {
     const longitude = e.lngLat.lng;
     const latitude = e.lngLat.lat;
-    console.log(longitude, latitude)
+    console.log(longitude, latitude);
     setNewPlace({
       lng: longitude,
       lat: latitude,
@@ -60,22 +59,22 @@ export default function MapComponent({items, currUser, setItems}) {
       lng: newPlace.lng,
       lat: newPlace.lat,
       description: data.description,
-      image: data.image
-    }
+      image: data.image,
+    };
     fetch('/api/create', {
       method: 'POST',
       headers: {
-        "Content-Type": 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newCard)
+      body: JSON.stringify(newCard),
     })
-    .then((res) => res.json())
-    .then(res => {
-      setItems((prev) => ([...prev, res]));
-      setMarks((prev) => ([...prev, res]));
-      setNewPlace(null);
-      setData({})
-    })
+      .then((res) => res.json())
+      .then((res) => {
+        setItems((prev) => ([...prev, res]));
+        setMarks((prev) => ([...prev, res]));
+        setNewPlace(null);
+        setData({});
+      });
     // .then(() => setNewPlace(null))
     // setNewPlace(null)
   };
@@ -95,107 +94,113 @@ export default function MapComponent({items, currUser, setItems}) {
         }}
         // transitionDuration="500"
       >
-        {marks?.map( mark => (
+        {marks?.map((mark) => (
           <>
-        <Marker 
-        longitude={mark.lng} 
-        latitude={mark.lat} 
-        >
-           <button
-              style={{width: '40px', background: 'none', border: 'none'}}
-              onClick={() => handleMarkerClick(mark.id, mark.lat, mark.long)}
+            <Marker
+              longitude={mark.lng}
+              latitude={mark.lat}
             >
-              <img src="/tea-cup.svg" alt="Icon" />
-            </button>
-        </Marker>
+              <button
+                style={{ width: '40px', background: 'none', border: 'none' }}
+                onClick={() => handleMarkerClick(mark.id, mark.lat, mark.long)}
+              >
+                <img src="/tea-cup.svg" alt="Icon" />
+              </button>
+            </Marker>
 
-        {mark.id === currentPlaceId && (
-          <Popup
-            key={mark.id}
-            latitude={mark.lat}
-            longitude={mark.lng}
-            closeButton={true}
-            closeOnClick={false}
-            onClose={() => setCurrentPlaceId(null)}
-            anchor="bottom">
-            <div>
-              <h5 style={{margin:'0', padding: '0', textAlign: 'center', opacity:'75%', color:'#594531'}}>{mark.title}</h5>
-            </div>
-          </Popup>
-          )}
+            {mark.id === currentPlaceId && (
+            <Popup
+              key={mark.id}
+              latitude={mark.lat}
+              longitude={mark.lng}
+              closeButton
+              closeOnClick={false}
+              onClose={() => setCurrentPlaceId(null)}
+              anchor="bottom"
+            >
+              <div>
+                <h5 style={{
+                  margin: '0', padding: '0', textAlign: 'center', opacity: '75%', color: '#594531',
+                }}
+                >
+                  {mark.title}
+                </h5>
+              </div>
+            </Popup>
+            )}
           </>
-        ))};
-{/* ----------------------------------------------- */}
+        ))}
+        ;
+        {/* ----------------------------------------------- */}
         <NavigationControl />
 
         {newPlace && (
           <>
-          <Marker
-          longitude={newPlace.lng} 
-          latitude={newPlace.lat} 
-          >
-          <button
-              style={{width: '40px', background: 'none', border: 'none'}}
-              // onClick={() => handleMarkerClick(mark.id, mark.lat, mark.long)}
+            <Marker
+              longitude={newPlace.lng}
+              latitude={newPlace.lat}
             >
-              <img src="/tea-cup.svg" alt="Icon" />
-            </button>
-          </Marker>
-          <Popup
-            longitude={newPlace.lng}
-            latitude={newPlace.lat}
-            anchor="left"
-            closeButton={true}
-            closeOnClick={false}
-            onClose={() => setNewPlace(null)}
-          >
-            <Form method="post" onSubmit={submitHandler}>
-              {/* <Form.Label>Title</Form.Label> */}
-              <Form.Control
-                name="title"
-                type="text"
-                onChange={inputHandler}
-                value={data.title || ''}
-                placeholder="Enter a title"
-                size="sm"
-                className="my-2"
-              />
-              {/* <Form.Label>Location</Form.Label> */}
-              <Form.Control
-                name="location"
-                type="text"
-                onChange={inputHandler}
-                value={data.location || ''}
-                placeholder="Enter a location"
-                size="sm"
-                className="mb-2"
-              />
-              {/* <Form.Label>Description</Form.Label> */}
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="description"
-                onChange={inputHandler}
-                value={data.description || ''}
-                placeholder="Enter a description"
-                size="sm"
-                className="mb-2"
-              />
-              {/* <Form.Label>Location</Form.Label> */}
-              <Form.Control
-                name="image"
-                type="text"
-                onChange={inputHandler}
-                value={data.image || ''}
-                placeholder="Enter a image"
-                size="sm"
-                className="mb-2"
-              />
-              <Button type="submit" variant="primary" size="sm" className="mb-2">
-                Add Card
-              </Button>
-            </Form>
-          </Popup>
+              <button
+                style={{ width: '40px', background: 'none', border: 'none' }}
+              >
+                <img src="/tea-cup.svg" alt="Icon" />
+              </button>
+            </Marker>
+            <Popup
+              longitude={newPlace.lng}
+              latitude={newPlace.lat}
+              anchor="left"
+              closeButton
+              closeOnClick={false}
+              onClose={() => setNewPlace(null)}
+            >
+              <Form method="post" onSubmit={submitHandler}>
+                {/* <Form.Label>Title</Form.Label> */}
+                <Form.Control
+                  name="title"
+                  type="text"
+                  onChange={inputHandler}
+                  value={data.title || ''}
+                  placeholder="Enter a title"
+                  size="sm"
+                  className="my-2"
+                />
+                {/* <Form.Label>Location</Form.Label> */}
+                <Form.Control
+                  name="location"
+                  type="text"
+                  onChange={inputHandler}
+                  value={data.location || ''}
+                  placeholder="Enter a location"
+                  size="sm"
+                  className="mb-2"
+                />
+                {/* <Form.Label>Description</Form.Label> */}
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="description"
+                  onChange={inputHandler}
+                  value={data.description || ''}
+                  placeholder="Enter a description"
+                  size="sm"
+                  className="mb-2"
+                />
+                {/* <Form.Label>Location</Form.Label> */}
+                <Form.Control
+                  name="image"
+                  type="text"
+                  onChange={inputHandler}
+                  value={data.image || ''}
+                  placeholder="Enter a image"
+                  size="sm"
+                  className="mb-2"
+                />
+                <Button type="submit" variant="primary" size="sm" className="mb-2">
+                  Add Card
+                </Button>
+              </Form>
+            </Popup>
           </>
         )}
       </Map>

@@ -1,5 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
+
 import { User, Card, Comment } from '../../db/models';
 // import { deleteProtect } from '../middlewares';
 
@@ -49,15 +50,19 @@ router.route('/auth/authorization')
     return res.sendStatus(401);
   });
 
-// create mark
-router.post('/create', async (req,res) => {
-  const data = await Card.create(req.body);
-  res.json(data)
-})
-// get all marks
-router.get('/cardlist', async (req,res) => {
-  const items = await Card.findAll()
+router.get('/cardlist', async (req, res) => {
+  const items = await Card.findAll();
   res.json(items);
-})
+});
+
+router.get('/cardpage/:id', async (req, res) => {
+  const oneCard = await Card.findOne({ where: { id: req.params.id } });
+  res.json(oneCard);
+});
+// create mark
+router.post('/create', async (req, res) => {
+  const data = await Card.create(req.body);
+  res.json(data);
+});
 
 export default router;

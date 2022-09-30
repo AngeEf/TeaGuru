@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegistrationPage({ setCurrUser }) {
   const [input, setInput] = useState({
@@ -11,6 +12,7 @@ export default function RegistrationPage({ setCurrUser }) {
   const inputHandler = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,7 +24,8 @@ export default function RegistrationPage({ setCurrUser }) {
       body: JSON.stringify(input),
     })
       .then((res) => res.json())
-      .then((data) => setCurrUser(data));
+      .then((data) => setCurrUser(data))
+      .then(() => navigate('/'));
   };
 
   return (
