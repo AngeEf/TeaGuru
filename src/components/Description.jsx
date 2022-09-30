@@ -1,13 +1,20 @@
 import React from 'react';
 
-export default function Description({ teaTitle = 'Green tea forever!', teaDescription = 'TEA TEA TEA TEA TEA TEA\nTEA TEA TEA' }) {
+export default function Description({ oneCard }) {
+  
   return (
     <>
       <div>
-        {teaTitle}
+        {oneCard.title}
       </div>
       <div>
-        {teaDescription}
+        {oneCard.country}
+      </div>
+      <div>
+        {oneCard.image}
+      </div>
+      <div>
+        {oneCard.description}
       </div>
     </>
   );
