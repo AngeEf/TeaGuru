@@ -41,3 +41,7 @@
     margin: 5px 0;
     border: 1px solid teal;
 }
+
+.active {
+    color: #000000 !important;
+}

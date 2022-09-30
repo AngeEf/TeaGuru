@@ -17,6 +17,14 @@ export default function CommentForm({ create }) {
   return (
 
     <form>
+      {/* Управляемый компонент */}
+      <MyInput
+        value={post.title}
+        onChange={(e) => setPost({ ...post, title: e.target.value })}
+        type="text"
+        placeholder="Название Комментария"
+      />
+      {/* Неуправляемый\Неконтролируемый компонент */}
       <MyInput
         value={post.body}
         onChange={(e) => setPost({ ...post, body: e.target.value })}
