@@ -45,3 +45,11 @@
 .active {
     color: #000000 !important;
 }
+.navlink{
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 5px;
+    text-decoration: none;
+    color:#000000
+}
