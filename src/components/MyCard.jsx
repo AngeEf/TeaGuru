@@ -3,20 +3,17 @@ import { Container, Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function MyCard() {
+function MyCard({ item, currUser}) {
   return (
     <Container>
       <Row md={3}>
-
         <Card style={{ width: 300 }}>
-          <Card.Header>Featured</Card.Header>
-          <Card.Body>
-            <Card.Title>Special title treatment</Card.Title>
+            <Card.Title>{item.title}</Card.Title>
             <Card.Text>
-              With supporting text below as a natural lead-in to additional content.
+              {item.location}
             </Card.Text>
-            <Button variant="primary">Click</Button>
-          </Card.Body>
+            {/* <Link to={`/user/cardpage/${item.id}`}>See more</Link> */}
+
         </Card>
       </Row>
     </Container>

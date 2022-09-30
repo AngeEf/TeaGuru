@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { User } from '../../db/models';
+import { User, Card, Comment } from '../../db/models';
 // import { deleteProtect } from '../middlewares';
 
 const router = express.Router();
@@ -48,4 +48,16 @@ router.route('/auth/authorization')
     }
     return res.sendStatus(401);
   });
+
+// create mark
+router.post('/create', async (req,res) => {
+  const data = await Card.create(req.body);
+  res.json(data)
+})
+// get all marks
+router.get('/cardlist', async (req,res) => {
+  const items = await Card.findAll()
+  res.json(items);
+})
+
 export default router;

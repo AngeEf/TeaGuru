@@ -19,7 +19,7 @@ function Navigationbar({ currUser, logOutHandler }) {
             </span>
 
             {currUser.id ? (
-              <NavLink className="nav-link" onClick={logOutHandler}>Logout</NavLink>
+              <span className="nav-link" onClick={logOutHandler}>Logout</span>
             ) : (
               <NavLink className="nav-link" to="/user/authorization">authorization</NavLink>
             )}

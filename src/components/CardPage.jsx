@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Comments from './Comments';
 import MyButton from './UI/button/MyButton';
 import MyInput from './UI/input/MyInput';
 import Description from './Description';
 import CommentForm from './CommentForm';
 
-export default function CardPage() {
+export default function CardPage({currUser, items}) {
   const [posts, setPosts] = useState([]);
   const [post, setPost] = useState({ title: '', body: '' });
+  const [onePage, setOnePage] = useState({})
+
+  const {id} = useParams()
+  useEffect(() => {
+    
+  })
 
   const addNewPost = (e) => {
     e.preventDefault();
