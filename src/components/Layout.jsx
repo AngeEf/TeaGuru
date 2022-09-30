@@ -17,10 +17,15 @@ export default function Layout({ initState }) {
         />
         <script defer src="/js/app.js" />
         <script defer src="/js/vendor.js" />
+        {/* maptiler */}
+        <script src="https://cdn.maptiler.com/maplibre-gl-js/v2.2.0-pre.2/maplibre-gl.js" />
+        <link href="https://cdn.maptiler.com/maplibre-gl-js/v2.2.0-pre.2/maplibre-gl.css" rel="stylesheet" />
+        {/* mapbox */}
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+        {/* bootstrap */}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossOrigin="anonymous" />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossOrigin="anonymous" />
-        <link href="/styles/main.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/App.css" />
+        {/* <link href="/styles/main.css" rel="stylesheet" /> */}
+        <link href="/App.css" rel="stylesheet" />
 
         <title>React SSR</title>
       </head>

@@ -49,7 +49,7 @@ function Navigationbar({ currUser, logOutHandler }) {
             {!currUser.id ? <Nav.Link to="/user/registration" style={{fontFamily: 'Arial', fontWeight: 'bold', fontSize: 20 }}>Registration</Nav.Link> : currUser.name }
 
             {currUser.id ? (
-              <Nav.Link onClick={logOutHandler} style={{ fontFamily: 'Arial', fontWeight: 'bold', fontSize: 20 }}>Logout</Nav.Link>
+              <span className="nav-link" onClick={logOutHandler}>Logout</span>
             ) : (
               <Nav.Link to="/user/authorization" style={{ fontFamily: 'Arial', fontWeight: 'bold', fontSize: 20 }}>Authorization</Nav.Link>
             )}

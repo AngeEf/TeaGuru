@@ -15,6 +15,7 @@ export default function CommentForm({ create }) {
   };
 
   return (
+
     <form>
       {/* Управляемый компонент */}
       <MyInput
@@ -28,9 +29,10 @@ export default function CommentForm({ create }) {
         value={post.body}
         onChange={(e) => setPost({ ...post, body: e.target.value })}
         type="text"
-        placeholder="Ваш комментарий"
+        placeholder="Комментарий"
       />
-      <MyButton onClick={addNewPost}>Создать пост</MyButton>
+      <MyButton onClick={addNewPost}>Оставить комментарий</MyButton>
     </form>
+
   );
 }

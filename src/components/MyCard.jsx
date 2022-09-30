@@ -2,20 +2,21 @@ import React from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
-function MyCard() {
+function MyCard({ item, currUser }) {
   return (
     <Container>
       <Row md={3}>
-        <Card>
-          <Card.Header>Featured</Card.Header>
-          <Card.Body>
-            <Card.Title>Special title treatment</Card.Title>
-            <Card.Text>
-              With supporting text below as a natural lead-in to additional content.
-            </Card.Text>
-            <Button variant="primary">Click</Button>
-          </Card.Body>
+        <Card style={{ width: 300 }}>
+
+          <Card.Title>{item.title}</Card.Title>
+          <Card.Text>
+            {item.location}
+          </Card.Text>
+          <Link to={`/user/cardpage/${item.id}`} className="btn btn-primary">перейти</Link>
+          {/* <Button variant="primary">Click</Button> */}
+
         </Card>
       </Row>
     </Container>
