@@ -9,6 +9,7 @@ function MyCard({ item, currUser }) {
     <Container>
       <Row md={3}>
         <Card style={{ width: 300 }}>
+
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>
             {item.location}

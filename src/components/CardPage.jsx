@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Col, Row } from 'react-bootstrap';
+
 import Comments from './Comments';
 import MyButton from './UI/button/MyButton';
 import MyInput from './UI/input/MyInput';
 import Description from './Description';
 import CommentForm from './CommentForm';
 
-export default function CardPage({ currUser }) {
-  const [oneCard, setOneCard] = useState({});
+export default function CardPage({ currUser, items }) {
   const [posts, setPosts] = useState([]);
-  const { id } = useParams();
+  const [post, setPost] = useState({ title: '', body: '' });
+  const [onePage, setOnePage] = useState({});
 
-  const [post, setPost] = useState({
-    title: '',
-    description: '',
-  });
+  const { id } = useParams();
 
   useEffect(() => {
     fetch(`/api/cardpage/${id}`)

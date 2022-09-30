@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MyInput from './UI/input/MyInput';
 import MyButton from './UI/button/MyButton';
 
-export default function CommentForm({ create {} }) {
+export default function CommentForm({ create }) {
   const [post, setPost] = useState({ title: '', body: '' });
 
   const addNewPost = (e) => {
