@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Map, { Marker, Popup, NavigationControl } from 'react-map-gl';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW5nZWVmIiwiYSI6ImNsOG11ZGJtbDBtdWEzcHF3YWp2aXphNmsifQ.sVmWjakm6PmhrNnrsT-LSg';
+const MAPBOX_TOKEN = process.env.MAPBOXTOKEN;
 
 export default function MapComponent({ items, currUser, setItems }) {
   const [marks, setMarks] = useState(items);
@@ -14,7 +14,6 @@ export default function MapComponent({ items, currUser, setItems }) {
 
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  //------------------------------------------------
   const [current, setCurrent] = useState(currUser);
 
   const [data, setData] = useState({
@@ -75,8 +74,6 @@ export default function MapComponent({ items, currUser, setItems }) {
         setNewPlace(null);
         setData({});
       });
-    // .then(() => setNewPlace(null))
-    // setNewPlace(null)
   };
 
   return (
@@ -131,7 +128,6 @@ export default function MapComponent({ items, currUser, setItems }) {
           </>
         ))}
         ;
-        {/* ----------------------------------------------- */}
         <NavigationControl />
 
         {newPlace && (
@@ -203,7 +199,6 @@ export default function MapComponent({ items, currUser, setItems }) {
             </Popup>
           </>
         )}
-        {/* ------------------------------- */}
       </Map>
     </div>
   );
